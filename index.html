@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="De Paritate et Phasi — a numerical-analysis essay by Jasmin Ivankovic." />
+  <title>De Paritate et Phasi · Jasmin Ivankovic</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to essay</a>
+  <header class="masthead">
+    <a class="seal" href="#top" aria-label="Return to top">D·P</a>
+    <nav aria-label="Primary navigation">
+      <a href="#argument">Argument</a>
+      <a href="#formula">Formula</a>
+      <a href="#reader">Reader</a>
+    </nav>
+    <a class="small-download" href="De-Paritate-et-Phasi.pdf" download>Download PDF</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <p class="eyebrow">A numerical-analysis essay · August 2026</p>
+      <div class="rule" aria-hidden="true"></div>
+      <h1>De Paritate<br><span>et Phasi</span></h1>
+      <p class="translation">On Parity and Phase</p>
+      <p class="subtitle">An Essay on Additive Form, Numerical Invariance,<br class="desktop-only" /> and the Discipline of Applied Discovery</p>
+      <p class="author">Jasmin Ivankovic</p>
+      <div class="hero-actions">
+        <a class="button primary" href="De-Paritate-et-Phasi.pdf" download>
+          <span>Download the essay</span><small>PDF · 17 pages</small>
+        </a>
+        <a class="button secondary" href="De-Paritate-et-Phasi_Inst.zip" download>
+          <span>Download the sources</span><small>SystemaDock Inst ZIP</small>
+        </a>
+      </div>
+      <a class="scroll-cue" href="#argument" aria-label="Continue to the argument">↓</a>
+    </section>
+
+    <section class="argument section" id="argument">
+      <div class="section-number">I</div>
+      <div class="section-copy">
+        <p class="eyebrow">Argumentum</p>
+        <h2>From an elementary identity<br />to a numerical instrument.</h2>
+        <p class="lead">The essay begins with the exact additive form <em>c = a + b</em>. It asks what becomes possible when reconstruction is joined to a carefully defined symmetry: closure can be measured, phase can be tested, and conjecture can be separated from proof.</p>
+      </div>
+      <blockquote>
+        “The decisive passage is not from number to number, but from an elementary identity to a disciplined instrument of inquiry.”
+      </blockquote>
+    </section>
+
+    <section class="formula-section section" id="formula">
+      <div class="formula-heading">
+        <div>
+          <p class="eyebrow">The verified relation</p>
+          <h2>A family of unit invariants</h2>
+        </div>
+        <p>Choose a positive integer exponent to inspect the formula’s structure and converse.</p>
+      </div>
+
+      <div class="formula-card">
+        <div class="formula-display" aria-live="polite">
+          <span class="fraction paren"><span>c − b</span><span>a</span></span><sup id="power-label">n</sup>
+          <span>=</span>
+          <span class="fraction"><span>(c − b)<sup id="power-label-2">n</sup></span><span>a<sup id="power-label-3">n</sup></span></span>
+          <span>= 1</span>
+        </div>
+        <div class="explorer">
+          <label for="power">Exponent <output id="power-output" for="power">3</output></label>
+          <input id="power" type="range" min="1" max="8" value="3" step="1" />
+          <div class="expansion" id="expansion">(c³ − 3c²b + 3cb² − b³) / a³ = 1</div>
+          <div class="verdict" id="verdict"><strong>Odd exponent:</strong> the converse retains the sign and recovers c = a + b.</div>
+        </div>
+      </div>
+
+      <div class="principles">
+        <article><span>01</span><h3>Exact forward law</h3><p>If c = a + b and a ≠ 0, every positive integer power equals one.</p></article>
+        <article><span>02</span><h3>Parity of the exponent</h3><p>Odd powers preserve the sign. Even powers also permit c = b − a.</p></article>
+        <article><span>03</span><h3>Numerical sensitivity</h3><p>Near unity, (1 + ε)<sup>n</sup> − 1 ≈ nε: signal and error are both magnified.</p></article>
+      </div>
+    </section>
+
+    <section class="reader-section section" id="reader">
+      <div class="reader-heading">
+        <div><p class="eyebrow">The complete essay</p><h2>Read in the browser</h2></div>
+        <a class="text-link" href="De-Paritate-et-Phasi.pdf" target="_blank" rel="noopener">Open full screen ↗</a>
+      </div>
+      <div class="reader-shell">
+        <object data="De-Paritate-et-Phasi.pdf#view=FitH" type="application/pdf" aria-label="De Paritate et Phasi essay PDF">
+          <div class="reader-fallback">
+            <p>Your browser cannot display the embedded PDF.</p>
+            <a class="button primary" href="De-Paritate-et-Phasi.pdf">Open the essay</a>
+          </div>
+        </object>
+      </div>
+    </section>
+
+    <section class="closing section">
+      <div class="ornament" aria-hidden="true">✦</div>
+      <p>“Through such limits an idea acquires form.<br />Through such form it becomes an instrument.”</p>
+      <div class="closing-actions">
+        <a href="De-Paritate-et-Phasi.pdf" download>PDF Essay ↓</a>
+        <a href="De-Paritate-et-Phasi_Inst.zip" download>SystemaDock Sources ↓</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>De Paritate et Phasi</span>
+    <span>Jasmin Ivankovic · 2026</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
