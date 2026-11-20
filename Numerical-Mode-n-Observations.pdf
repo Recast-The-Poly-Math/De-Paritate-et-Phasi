@@ -1,0 +1,80 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+5 0 obj
+<< /Length 2288 >>
+stream
+BT /F1 10 Tf 45 760 Td 13 TL
+(FROM PAIRWISE DIFFERENCES TO AN EXACT NUMERICAL MODE FORMULA) Tj
+T* (FOR n OBSERVATIONS) Tj
+T* (Jasmin Ivankovic and ChatGPT \(GPT-6\) | November 20, 2026) Tj
+T* () Tj
+T* (ABSTRACT) Tj
+T* (We give an exact algebraic representation of the statistical mode) Tj
+T* (of a finite dataset using pairwise differences and floor functions.) Tj
+T* (This is a reformulation of frequency counting, not a new estimator.) Tj
+T* () Tj
+T* (1. DEFINITIONS) Tj
+T* (Let x_1,...,x_n be real observations, n >= 1.) Tj
+T* (For each i define f_i = sum_j floor\(1/\(1+abs\(x_i-x_j\)\)\).) Tj
+T* (Because each summand equals 1 precisely when x_i=x_j,) Tj
+T* (f_i is the observed frequency of x_i.) Tj
+T* (Set F = max_i f_i and w_i = floor\(1/\(1+F-f_i\)\).) Tj
+T* (Then w_i = 1 precisely for observations having maximal frequency.) Tj
+T* () Tj
+T* (2. THE UNIQUE-MODE FORMULA) Tj
+T* (If the dataset has a unique modal value,) Tj
+T* (M = \(sum_i x_i*w_i\)/\(sum_i w_i\).) Tj
+T* (Every nonzero weight selects an occurrence of that same value,) Tj
+T* (so this quotient is exactly the mode.) Tj
+T* () Tj
+T* (3. MULTIPLE MODES) Tj
+T* (If distinct values tie for the maximum frequency, the quotient) Tj
+T* (above averages the tied modes; it is NOT the set of modes.) Tj
+T* (The exact set-valued mode is {x_i : f_i = F}.) Tj
+T* () Tj
+T* (4. EXAMPLES) Tj
+T* (\(20,10,10\): frequencies \(1,2,2\); unique mode 10.) Tj
+T* (\(10,20,20\): frequencies \(1,2,2\); unique mode 20.) Tj
+T* (\(2,2,7,7,9\): frequencies \(2,2,2,2,1\); modes {2,7}.) Tj
+T* (\(1,2,3\): frequencies \(1,1,1\); modes {1,2,3}.) Tj
+T* () Tj
+T* (5. LIMITATIONS AND IMPLEMENTATION) Tj
+T* (The formula applies to finite real datasets with exact equality.) Tj
+T* (Floating-point measurements may need explicit tolerances,) Tj
+T* (which change the meaning of equality and thus the mode.) Tj
+T* (Naive pairwise comparison takes O\(n^2\) time.) Tj
+T* (Sorting or hash-based counting may be computationally faster.) Tj
+T* () Tj
+T* (CONCLUSION) Tj
+T* (Pairwise differences can encode repeated observations exactly.) Tj
+T* (The resulting floor-based construction reproduces the ordinary) Tj
+T* (frequency-defined mode under its stated assumptions.) Tj
+T* () Tj
+T* (Coauthored mathematical exposition for SystemaDock Research Home.) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000309 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2649
+%%EOF
