@@ -102,9 +102,9 @@
         <dl>
           <dt><var>E</var>(<var>N</var>)</dt><dd>The lower half, ⌊<var>N</var>/2⌋.</dd>
           <dt><var>B</var>(<var>N</var>)</dt><dd>The upper half, ⌈<var>N</var>/2⌉.</dd>
-          <dt>Δ<var>B</var>(<var>N</var>)</dt><dd>The change <var>B</var>(<var>N</var>) − <var>B</var>(<var>N</var> − 1). It equals 1 for odd <var>N</var> and 0 for even <var>N</var>.</dd>
+          <dt>Δ<var>B</var>(<var>N</var>)</dt><dd>The change <var>B</var>(<var>N</var>) − <var>B</var>(<var>N</var> − 1) for <var>N</var> &gt; 1. PrimeScope sets it to 0 at <var>N</var> = 1. It equals 1 for odd <var>N</var> ≥ 3 and 0 for even <var>N</var>.</dd>
         </dl>
-        <p>For example, 9 and 11 both give Δ<var>B</var> = 1. The verified prime markers distinguish the composite 9 from the prime 11.</p>
+        <p>The lab also plots the experimental expression <var>P</var>(<var>N</var>) = <var>N</var> − |<var>N</var> − Δ<var>B</var>(<var>N</var>)| − <var>B</var>(<var>N</var>). For example, 9 and 11 both give Δ<var>B</var> = 1. The verified prime markers distinguish the composite 9 from the prime 11.</p>
         <a class="launch" href="https://recast-theorist-prime-edge.recast.chatgpt.site">Open the live PrimeScope lab <span aria-hidden="true">→</span></a>
       </div>
     </section>
