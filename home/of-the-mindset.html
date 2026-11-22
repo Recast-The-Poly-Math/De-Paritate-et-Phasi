@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Keiden J. Ivanković’s Coordinate Generalization thesis and the Recast Prime Edge Detector.">
+  <title>Of The Mindset · Research Home</title>
+  <style>
+    :root {--navy:#0b1020;--light:#f8f5ed;--ink:#18243a;--gold:#ebcb89;--cyan:#84ddff}
+    * {box-sizing:border-box}
+    body {margin:0;background:var(--navy);color:#eef2fa;font:1.1rem/1.65 Georgia,serif}
+    a {color:inherit;text-underline-offset:.25em}
+    :focus-visible {outline:2px solid currentColor;outline-offset:5px}
+    .measure {width:min(100% - 2.5rem,72rem);margin-inline:auto}
+    nav {display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;padding:1rem 0;font:600 .85rem/1.5 system-ui,sans-serif}
+    nav a {padding:.35rem 0}
+    header {border-bottom:1px solid #303c56}
+    .hero {padding:clamp(3rem,8vw,7rem) 0}
+    h1,h2,h3 {font-weight:400;line-height:1.1;text-wrap:balance}
+    h1 {font-size:clamp(3rem,8vw,7rem);margin:.25rem 0}
+    h2 {font-size:clamp(2.25rem,5vw,4.25rem);margin:.25rem 0 1rem}
+    h3 {font-size:1.55rem;margin:2rem 0 .6rem}
+    p {margin:.75rem 0;max-width:70ch}
+    .label {font:700 .76rem/1.5 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    .hero .label {color:var(--gold)}
+    .paper,.lab {padding:clamp(3rem,7vw,6rem) 0;scroll-margin-top:1rem}
+    .paper {background:var(--light);color:var(--ink)}
+    .paper .label {color:#68522d}
+    .chapter {display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem)}
+    .plot {align-self:start;background:#fffdf7;border:1px solid #cbbb9e;margin:0;padding:1.15rem}
+    .plot canvas {display:block;width:100%;height:auto;margin-block:.8rem .4rem;border:1px solid #e3dbcb}
+    .plot figcaption,.legend,.plot-controls,.plot output {font:.84rem/1.5 system-ui,sans-serif}
+    .plot-controls {display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem;margin-top:.7rem}
+    .plot-controls select {font:inherit;color:inherit;background:white;border:1px solid #776b57;padding:.45rem;min-height:44px}
+    .legend {margin-bottom:.25rem}
+    .marker {display:inline-block;width:.7rem;height:.7rem;border-radius:50%;margin-right:.25rem}
+    .marker.prime {background:#9e342b}
+    .marker.other {background:#637487;margin-left:.5rem}
+    .equation {overflow-wrap:anywhere;padding:1rem;border-left:2px solid #aa8140;background:#ece5d5}
+    .lab {background:#121a2e}
+    .lab .label {color:var(--cyan)}
+    .lab dl {display:grid;grid-template-columns:max-content minmax(0,1fr);gap:.6rem 1rem;margin:1.5rem 0;max-width:43rem}
+    .lab dt {color:var(--cyan);white-space:nowrap}
+    .lab dd {margin:0}
+    .launch {display:inline-block;padding:.7rem 1.1rem;margin-top:1rem;background:var(--cyan);color:#0b1020;text-decoration:none;font:700 .9rem/1.4 system-ui,sans-serif}
+    footer {padding:1.25rem 0;font:600 .85rem/1.5 system-ui,sans-serif}
+    @media(max-width:46rem) {.chapter {grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="measure" aria-label="Research navigation">
+      <a href="./#of-the-mindset">Research Home</a>
+      <a href="#coordinate-thesis">Coordinate Thesis</a>
+      <a href="#prime-edge-detector">Prime Edge Detector</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero measure" aria-labelledby="page-title">
+      <p class="label">Keiden J. Ivanković · Recast Theorist</p>
+      <h1 id="page-title">Of The Mindset</h1>
+      <p>Two projects from fall 2025 explore how a choice of coordinates changes the patterns we can see.</p>
+    </section>
+    <section class="paper" id="coordinate-thesis" aria-labelledby="thesis-title">
+      <div class="measure">
+        <p class="label">Thesis overview</p>
+        <h2 id="thesis-title">Coordinate Generalization &amp; Prime Number Thesis</h2>
+        <div class="chapter">
+          <div>
+            <p><em>Recasting the Functional: A Thesis on Coordinate Generalization and Mathematical Heuristics</em> begins with the generalization of a point. The manuscript calls possible links between coordinate locations <em>virtual space</em>. It treats points in a constructed sequence as actualized when those links are used to build a representation.</p>
+            <p>The draft develops this idea through a coordinate transformation, a proposed measure of virtual entropy, and an epsilon ratio written as ε = A/P, with A and P named area and parameter. These are concepts within the manuscript’s proposed framework.</p>
+            <h3>A coordinate experiment with primes</h3>
+            <p>The fall 2025 visualization maps the positive integer <var>n</var> to a point in the plane. The logarithm and square root give the horizontal and vertical coordinates different rates of growth.</p>
+            <p class="equation"><var>F</var>(<var>n</var>) = (sin(<var>n</var>) ln(<var>n</var> + 1), cos(<var>n</var>) √<var>n</var>)</p>
+            <p>Prime labels are computed separately by trial division. Changing the range shows how apparent clusters depend on the coordinates and on how many integers are plotted.</p>
+          </div>
+          <figure class="plot">
+            <figcaption><strong>Recast prime embedding</strong></figcaption>
+            <div class="plot-controls">
+              <label for="integer-limit">Integers plotted</label>
+              <select id="integer-limit">
+                <option value="100">1–100</option>
+                <option value="250" selected>1–250</option>
+                <option value="500">1–500</option>
+                <option value="1000">1–1,000</option>
+              </select>
+            </div>
+            <canvas id="prime-plot" width="640" height="420" role="img" aria-label="Coordinate plot of integers with primes marked in red"></canvas>
+            <p class="legend"><span class="marker prime"></span> Primes <span class="marker other"></span> Other integers</p>
+            <output id="prime-count" for="integer-limit" aria-live="polite"></output>
+            <noscript><p>Enable JavaScript to draw the coordinate plot.</p></noscript>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <section class="lab" id="prime-edge-detector" aria-labelledby="lab-title">
+      <div class="measure">
+        <p class="label">Recast PrimeScope — VisuaLaw</p>
+        <h2 id="lab-title">Prime Edge Detector</h2>
+        <p>The original project explored ΔB waveforms, macro density, twin pulses, and an entropy field. The current PrimeScope plots the split of each integer and compares experimental signals with independently verified prime markers.</p>
+        <dl>
+          <dt><var>E</var>(<var>N</var>)</dt><dd>The lower half, ⌊<var>N</var>/2⌋.</dd>
+          <dt><var>B</var>(<var>N</var>)</dt><dd>The upper half, ⌈<var>N</var>/2⌉.</dd>
+          <dt>Δ<var>B</var>(<var>N</var>)</dt><dd>The change <var>B</var>(<var>N</var>) − <var>B</var>(<var>N</var> − 1). It equals 1 for odd <var>N</var> and 0 for even <var>N</var>.</dd>
+        </dl>
+        <p>For example, 9 and 11 both give Δ<var>B</var> = 1. The verified prime markers distinguish the composite 9 from the prime 11.</p>
+        <a class="launch" href="https://recast-theorist-prime-edge.recast.chatgpt.site">Open the live PrimeScope lab <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="measure"><a href="./#of-the-mindset">Back to Research Home</a></footer>
+  <script>
+    const limit = document.getElementById('integer-limit');
+    const plot = document.getElementById('prime-plot');
+    const count = document.getElementById('prime-count');
+    const context = plot.getContext('2d');
+
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let divisor = 2; divisor * divisor <= n; divisor += 1) {
+        if (n % divisor === 0) return false;
+      }
+      return true;
+    }
+
+    function draw() {
+      const upper = Number(limit.value);
+      const xRange = Math.log1p(upper);
+      const yRange = Math.sqrt(upper);
+      const centerX = plot.width / 2;
+      const centerY = plot.height / 2;
+      const projectX = x => centerX + x / xRange * (centerX - 25);
+      const projectY = y => centerY - y / yRange * (centerY - 25);
+      const points = Array.from({length: upper}, (_, index) => {
+        const n = index + 1;
+        return {
+          x: projectX(Math.sin(n) * Math.log1p(n)),
+          y: projectY(Math.cos(n) * Math.sqrt(n)),
+          prime: isPrime(n)
+        };
+      });
+
+      if (context) {
+        context.clearRect(0, 0, plot.width, plot.height);
+        context.beginPath();
+        context.moveTo(13, centerY);
+        context.lineTo(plot.width - 13, centerY);
+        context.moveTo(centerX, 13);
+        context.lineTo(centerX, plot.height - 13);
+        context.strokeStyle = '#b6a994';
+        context.stroke();
+        context.fillStyle = '#68522d';
+        context.font = '17px Georgia';
+        context.fillText('x', plot.width - 21, centerY - 8);
+        context.fillText('y', centerX + 8, 21);
+
+        for (const prime of [false, true]) {
+          context.fillStyle = prime ? '#9e342b' : '#637487';
+          for (const point of points.filter(p => p.prime === prime)) {
+            context.beginPath();
+            context.arc(point.x, point.y, prime ? 3.4 : 2, 0, 2 * Math.PI);
+            context.fill();
+          }
+        }
+      }
+
+      const primes = points.filter(point => point.prime).length;
+      count.textContent = `${primes} primes among ${upper.toLocaleString('en-US')} integers.`;
+    }
+
+    limit.addEventListener('change', draw);
+    draw();
+  </script>
+</body>
+</html>
