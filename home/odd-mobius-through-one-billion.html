@@ -88,6 +88,25 @@
       <p>Across 601 logarithmically spaced cutoffs from 1,000 to one billion, the largest sampled absolute ratio was approximately 0.69524, at <var>x</var> = 1,622, where the signed total was −28.</p>
     </section>
 
+    <section aria-labelledby="arbitrary-range">
+      <h2 id="arbitrary-range">How much cancellation occurs in an arbitrary range?</h2>
+      <p>Let <var>S</var>(<var>x</var>) be the published signed total through <var>x</var>, with the term for 1 omitted. For any inclusive interval [<var>A</var>, <var>B</var>] between 1 and one billion, compute the totals at its two endpoints as shown below. Define <var>S</var>(0) = 0.</p>
+      <p class="equation">Signed count in [<var>A</var>, <var>B</var>] = <var>S</var>(<var>B</var>) − <var>S</var>(<var>A</var> − 1).</p>
+      <p>The difference is exact. To compare the size of the imbalance across intervals, divide its absolute value by √<var>L</var>, where <var>L</var> = <var>B</var> − <var>A</var> + 1 counts all integer positions in the interval.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Examples for arbitrary intervals">
+        <table>
+          <caption>Exact interval totals and their size relative to √<var>L</var></caption>
+          <thead><tr><th scope="col">Inclusive interval</th><th scope="col">Length <var>L</var></th><th scope="col">Signed total</th><th scope="col">Absolute total / √<var>L</var></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">314,159,265–314,259,264</th><td>100,000</td><td>−60</td><td>0.18974</td></tr>
+            <tr><th scope="row">999,900,001–1,000,000,000</th><td>100,000</td><td>178</td><td>0.56289</td></tr>
+            <tr><th scope="row">500,000,001–1,000,000,000</th><td>500,000,000</td><td>−222</td><td>0.00993</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The two intervals of length 100,000 have different imbalances. The 601 original samples measured totals starting from 1. Their largest observed ratio, 0.69524, applies to those sampled cutoffs. A bound in terms of interval length that holds for every starting point would require a separate argument.</p>
+    </section>
+
     <section aria-labelledby="method">
       <h2 id="method">How the count works</h2>
       <p>Use only primes greater than 2. An odd integer with any repeated prime factor contributes zero. A product of <var>k</var> distinct odd primes contributes (−1)<sup><var>k</var></sup>. The resulting signed total is the odd Möbius sum with its initial term μ(1) = 1 removed.</p>
