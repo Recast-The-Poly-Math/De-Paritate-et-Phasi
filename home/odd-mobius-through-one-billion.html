@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10182a">
+  <meta name="description" content="Recast Theorist’s exact count of odd Möbius weights through one billion and its connection to the Riemann hypothesis.">
+  <title>Odd Möbius Cancellation Through One Billion · Research Home</title>
+  <style>
+    :root {color-scheme:light;--navy:#10182a;--paper:#f9f6ee;--ink:#18243a;--muted:#514f4a;--line:#d6ccba;--gold:#efca86}
+    * {box-sizing:border-box}
+    body {margin:0;background:var(--paper);color:var(--ink);font:1.12rem/1.7 Georgia,serif}
+    a {color:inherit;text-underline-offset:.23em}
+    a:focus-visible,summary:focus-visible {outline:2px solid currentColor;outline-offset:4px}
+    .wrap {width:min(100% - 2.25rem,55rem);margin-inline:auto}
+    header {background:var(--navy);color:#f8f4ec}
+    nav {display:flex;gap:.35rem 1.5rem;flex-wrap:wrap;padding:1.05rem 0;font:600 .88rem/1.5 system-ui,sans-serif}
+    .hero {padding:clamp(2.4rem,7vw,5.5rem) 0}
+    .byline {color:var(--gold);font:650 .8rem/1.5 system-ui,sans-serif;letter-spacing:.10em;text-transform:uppercase}
+    h1,h2 {font-weight:400;line-height:1.1;text-wrap:balance}
+    h1 {font-size:clamp(2.55rem,7vw,5.25rem);margin:.65rem 0 1rem}
+    h2 {font-size:clamp(1.65rem,4vw,2.35rem);margin:0 0 1rem}
+    p {max-width:72ch;margin:0 0 1rem}
+    .hero p:last-child {color:#d8d7df;max-width:58ch;margin-bottom:0}
+    main {padding:2.75rem 0}
+    section + section {margin-top:3rem}
+    .result {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);margin:0 0 1.25rem;background:#fffdf8}
+    .result div {padding:1rem}
+    .result div + div {border-left:1px solid var(--line)}
+    .result dt {font:600 .85rem/1.4 system-ui,sans-serif;color:var(--muted)}
+    .result dd {margin:.3rem 0 0;font:600 clamp(1rem,3.3vw,1.8rem)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums}
+    .result div:last-child {background:#ece3d0}
+    .table-scroll {overflow-x:auto}
+    table {width:100%;border-collapse:collapse;background:#fffdf8;font:400 .92rem/1.5 system-ui,sans-serif;font-variant-numeric:tabular-nums}
+    caption {text-align:left;padding:.35rem 0;font-weight:650}
+    th,td {padding:.7rem .8rem;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    th {font-weight:600}
+    th:first-child {text-align:left}
+    thead {background:#eee6d7}
+    .equation {border-inline-start:3px solid #a97f42;padding:.65rem .9rem;background:#eee6d7;overflow-wrap:anywhere}
+    details {border:1px solid var(--line);background:#fffdf8}
+    summary {cursor:pointer;padding:.8rem 1rem;font:600 .9rem/1.5 system-ui,sans-serif}
+    pre {margin:0;padding:1rem;overflow:auto;max-height:33rem;background:var(--navy);color:#e8edf9;font-size:.88rem;line-height:1.6}
+    footer {padding:1.25rem 0 2rem;border-top:1px solid var(--line);font:600 .88rem/1.5 system-ui,sans-serif}
+    @media(max-width:32rem) {.result {grid-template-columns:1fr}.result div + div {border-left:0;border-top:1px solid var(--line)}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Research navigation">
+        <a href="./">Research Home</a>
+        <a href="of-the-mindset.html">Of The Mindset</a>
+        <a href="https://recast-theorist-prime-edge.recast.chatgpt.site/#laboratory">Prime Edge Detector</a>
+      </nav>
+      <div class="hero">
+        <p class="byline">Recast Theorist · Computational research note</p>
+        <h1>Odd Möbius Cancellation Through One Billion</h1>
+        <p>A signed count built from the primes greater than 2, and what its imbalance tells us about the Riemann hypothesis.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="results">
+      <h2 id="results">Exact count at one billion</h2>
+      <dl class="result">
+        <div><dt>Positive terms</dt><dd>202,640,878</dd></div>
+        <div><dt>Negative terms</dt><dd>202,643,868</dd></div>
+        <div><dt>Signed total</dt><dd>−2,990</dd></div>
+      </dl>
+      <p>The signed count starts at 3 and omits 1. At one billion, its absolute imbalance is about 0.09455 times the square root of the cutoff.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Results by cutoff">
+        <table>
+          <caption>Exact counts at powers of ten</caption>
+          <thead><tr><th scope="col">Cutoff <var>x</var></th><th scope="col">Positive</th><th scope="col">Negative</th><th scope="col">Signed total</th><th scope="col">Total / √<var>x</var></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1,000</th><td>194</td><td>209</td><td>−15</td><td>−0.47434</td></tr>
+            <tr><th scope="row">10,000</th><td>2,007</td><td>2,048</td><td>−41</td><td>−0.41000</td></tr>
+            <tr><th scope="row">100,000</th><td>20,234</td><td>20,292</td><td>−58</td><td>−0.18341</td></tr>
+            <tr><th scope="row">1,000,000</th><td>202,712</td><td>202,573</td><td>139</td><td>0.13900</td></tr>
+            <tr><th scope="row">10,000,000</th><td>2,026,721</td><td>2,026,153</td><td>568</td><td>0.17962</td></tr>
+            <tr><th scope="row">100,000,000</th><td>20,264,767</td><td>20,263,692</td><td>1,075</td><td>0.10750</td></tr>
+            <tr><th scope="row">1,000,000,000</th><td>202,640,878</td><td>202,643,868</td><td>−2,990</td><td>−0.09455</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Across 601 logarithmically spaced cutoffs from 1,000 to one billion, the largest sampled absolute ratio was approximately 0.69524, at <var>x</var> = 1,622, where the signed total was −28.</p>
+    </section>
+
+    <section aria-labelledby="method">
+      <h2 id="method">How the count works</h2>
+      <p>Use only primes greater than 2. An odd integer with any repeated prime factor contributes zero. A product of <var>k</var> distinct odd primes contributes (−1)<sup><var>k</var></sup>. The resulting signed total is the odd Möbius sum with its initial term μ(1) = 1 removed.</p>
+      <p>The calculation sieves the small cutoffs directly. At larger cutoffs it uses the exact divisor identity below, grouping odd <var>d</var> that give the same quotient. Here <var>M</var><sub>odd</sub> includes 1.</p>
+      <p class="equation">∑<sub>odd <var>d</var> ≤ <var>x</var></sub> <var>M</var><sub>odd</sub>(⌊<var>x</var>/<var>d</var>⌋) = 1.</p>
+      <p>The number of odd squarefree integers, together with the signed total, determines the positive and negative counts. A second computation used the ordinary summatory Möbius function and recovered the same net of −2,990 at one billion.</p>
+      <details>
+        <summary>Reproduce the counts with C++17</summary>
+        <pre><code>#include &lt;cmath&gt;
+#include &lt;cstdint&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iomanip&gt;
+#include &lt;iostream&gt;
+#include &lt;set&gt;
+#include &lt;unordered_map&gt;
+#include &lt;vector&gt;
+
+class OddMobius {
+  static constexpr int limit = 5'000'000;
+  std::vector&lt;int8_t&gt; mu = std::vector&lt;int8_t&gt;(limit + 1);
+  std::vector&lt;int&gt; prefix = std::vector&lt;int&gt;(limit + 1);
+  std::unordered_map&lt;int64_t, int64_t&gt; cache;
+
+public:
+  OddMobius() {
+    std::vector&lt;int&gt; least(limit + 1), primes;
+    mu[1] = 1;
+    for (int n = 2; n &lt;= limit; ++n) {
+      if (least[n] == 0) {
+        least[n] = n;
+        primes.push_back(n);
+        mu[n] = -1;
+      }
+      for (int p : primes) {
+        if (p &gt; limit / n) break;
+        least[n * p] = p;
+        if (p == least[n]) break;
+        mu[n * p] = -mu[n];
+      }
+      prefix[n] = prefix[n - 1] + (n % 2 ? mu[n] : 0);
+    }
+    for (auto &amp;count : prefix) ++count;
+    prefix[0] = 0;
+  }
+
+  int64_t sum(int64_t x) {
+    if (x &lt;= limit) return prefix[x];
+    if (auto it = cache.find(x); it != cache.end()) return it-&gt;second;
+    // Summing M_odd(floor(x/d)) over odd d gives 1 by Möbius inversion.
+    int64_t total = 1;
+    for (int64_t first = 3; first &lt;= x;) {
+      const auto q = x / first;
+      const auto last = x / q;
+      const auto odds = (last + 1) / 2 - first / 2;
+      total -= odds * sum(q);
+      first = ((last + 1) | 1);
+    }
+    return cache.emplace(x, total).first-&gt;second;
+  }
+
+  int64_t nonzero(int64_t x) const {
+    int64_t total = 0;
+    for (int64_t d = 1; d * d &lt;= x; d += 2) total += mu[d] * ((x / (d * d) + 1) / 2);
+    return total;
+  }
+
+  void verify() {
+    for (int n : {1, 3, 9, 15, 90, 1001, 12345}) {
+      int64_t expected = 0;
+      for (int m = 1; m &lt;= n; m += 2) {
+        int remainder = m;
+        int sign = 1;
+        for (int p = 3; p * p &lt;= remainder; p += 2) {
+          if (remainder % p) continue;
+          remainder /= p;
+          sign = -sign;
+          if (remainder % p == 0) {
+            sign = 0;
+            break;
+          }
+        }
+        if (remainder &gt; 1) sign = -sign;
+        expected += sign;
+      }
+      if (sum(n) != expected) std::exit(1);
+    }
+  }
+};
+
+int main() {
+  OddMobius mobius;
+  mobius.verify();
+  std::cout &lt;&lt; std::fixed &lt;&lt; std::setprecision(7);
+  for (int64_t x = 1000; x &lt;= 1'000'000'000; x *= 10) {
+    const auto signed_count = mobius.sum(x);
+    const auto nonzero = mobius.nonzero(x);
+    const auto positive = (nonzero + signed_count) / 2 - 1;
+    const auto negative = (nonzero - signed_count) / 2;
+    std::cout &lt;&lt; x &lt;&lt; ' ' &lt;&lt; positive &lt;&lt; ' ' &lt;&lt; negative &lt;&lt; ' '
+              &lt;&lt; signed_count - 1 &lt;&lt; ' ' &lt;&lt; (signed_count - 1) / std::sqrt(x) &lt;&lt; '\n';
+  }
+  std::set&lt;int64_t&gt; checkpoints;
+  for (int i = 0; i &lt;= 600; ++i) checkpoints.insert(std::llround(std::pow(10.0, 3 + i / 100.0)));
+  for (int decade = 3; decade &lt; 9; ++decade) {
+    const auto lo = std::llround(std::pow(10.0, decade));
+    const auto hi = 10 * lo;
+    double peak = 0;
+    int64_t peak_x = 0;
+    for (const auto x : checkpoints) {
+      if (x &lt; lo || x &gt;= hi) continue;
+      const double scaled = std::abs(mobius.sum(x) - 1) / std::sqrt(x);
+      if (scaled &gt; peak) {
+        peak = scaled;
+        peak_x = x;
+      }
+    }
+    std::cout &lt;&lt; "Peak sample " &lt;&lt; lo &lt;&lt; ' ' &lt;&lt; hi &lt;&lt; ' ' &lt;&lt; peak_x &lt;&lt; ' ' &lt;&lt; peak &lt;&lt; '\n';
+  }
+}
+</code></pre>
+      </details>
+    </section>
+
+    <section aria-labelledby="interpretation">
+      <h2 id="interpretation">Connection to the Riemann hypothesis</h2>
+      <p>The simulation measures cancellation at finite cutoffs. A bound of order <var>x</var><sup>1/2+ε</sup> for the odd Möbius sum, for every ε &gt; 0 as <var>x</var> tends to infinity, would establish the Riemann hypothesis. Partial summation would give a holomorphic reciprocal zeta function for Re(<var>s</var>) &gt; 1/2. Removing the Euler factor at 2 leaves the zero-free question in that half-plane unchanged.</p>
+      <p>The sampled cutoffs show strong cancellation on the tested range. The bound for arbitrarily large <var>x</var> remains open.</p>
+      <p>See <a href="https://www.claymath.org/millennium/riemann-hypothesis/">Clay Mathematics Institute’s statement of the hypothesis</a> and <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B01C7628DF4D57CAE8410901FD6A9321/S0305004124000306a.pdf">the summatory Möbius criterion discussed by Hu and coauthors</a>.</p>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><a href="./#research-essays">Back to Research Home publications</a></div></footer>
+</body>
+</html>
