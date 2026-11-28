@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10182a">
+  <meta name="description" content="A reproducible test of Goldbach’s conjecture using a phase function from De Paritate et Phasi, with prime pairs verified through one million.">
+  <title>Testing Goldbach with Parity and Phase · Research Home</title>
+  <style>
+    :root {color-scheme:light;--navy:#10182a;--paper:#f9f6ee;--ink:#18243a;--muted:#56514b;--line:#d6ccba;--gold:#efca86}
+    * {box-sizing:border-box}
+    body {margin:0;background:var(--paper);color:var(--ink);font:1.1rem/1.72 Georgia,serif}
+    a {color:inherit;text-underline-offset:.2em}
+    a:focus-visible,[tabindex]:focus-visible {outline:2px solid currentColor;outline-offset:4px}
+    .wrap {width:min(100% - 2.25rem,55rem);margin-inline:auto}
+    header {background:var(--navy);color:#f8f4ec}
+    nav {display:flex;flex-wrap:wrap;gap:.45rem 1.55rem;padding:1.1rem 0;font:600 .88rem/1.5 system-ui,sans-serif}
+    .hero {padding:clamp(2.5rem,7vw,5.2rem) 0}
+    .byline {color:var(--gold);font:650 .82rem/1.5 system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase}
+    h1,h2 {font-weight:400;line-height:1.12;text-wrap:balance}
+    h1 {font-size:clamp(2.65rem,7vw,5rem);margin:.55rem 0 1.15rem}
+    h2 {font-size:clamp(1.7rem,4vw,2.3rem);margin:0 0 .85rem}
+    p {max-width:72ch;margin:0 0 1rem}
+    .hero p:last-child {color:#e0dfe5;max-width:64ch;margin-bottom:0}
+    main {padding:2.5rem 0 3rem}
+    section + section {margin-top:2.7rem}
+    .equation {padding:.72rem 1rem;border-inline-start:3px solid #a17b42;background:#eee6d7;font-size:1.18rem;overflow-wrap:anywhere}
+    .table-scroll {overflow-x:auto;margin:0 0 1.2rem}
+    table {width:100%;border-collapse:collapse;background:#fffdf8;font:400 .94rem/1.55 system-ui,sans-serif;font-variant-numeric:tabular-nums}
+    caption {text-align:left;padding:0 0 .55rem;font-weight:600}
+    th,td {padding:.62rem .8rem;border-bottom:1px solid var(--line);text-align:right}
+    th {font-weight:600}
+    th:first-child {text-align:left}
+    thead {background:#eee6d7}
+    code {padding:.12rem .32rem;background:#eee6d7;font-size:.91em;overflow-wrap:anywhere}
+    footer {padding:1.2rem 0 2.3rem;border-top:1px solid var(--line);color:var(--muted);font:600 .88rem/1.5 system-ui,sans-serif}
+    @media (max-width:32rem) {th,td {padding:.46rem .38rem} table {font-size:.78rem}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Research navigation">
+        <a href="./#research-essays">Research Home</a>
+        <a href="../">De Paritate et Phasi</a>
+        <a href="#reproduce">Reproduce the results</a>
+      </nav>
+      <div class="hero">
+        <p class="byline">Research note · <time datetime="2026-11-27">November 27, 2026</time></p>
+        <h1>Testing Goldbach with Parity and Phase</h1>
+        <p>A phase function from Jasmin Ivankovic’s <cite>De Paritate et Phasi</cite> gives an exact divisibility test at selected scales. The experiment uses it to filter candidate sums and verifies a prime pair for every even target from 4 through 1,000,000.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="phase">
+      <h2 id="phase">From parity to divisibility</h2>
+      <p>Goldbach’s conjecture asks whether every even integer <var>N</var> ≥ 4 is a sum of two primes. The case 4 = 2 + 2 is immediate. For <var>N</var> &gt; 4, both primes in a representation must be odd, since an even prime can only be 2 and the other summand would then be even and greater than 2.</p>
+      <p>Section 3 of <cite>De Paritate et Phasi</cite> defines the phase function <var>p</var><sub><var>h</var></sub>(<var>x</var>) = cos(π<var>x</var>/<var>h</var>). At <var>h</var> = 1, the essay’s complementarity score is zero for every integer split of an even target, because the two summands always have the same parity. Scaling the phase by <var>h</var> = <var>q</var>/2 gives a test for a different property. <a href="../De-Paritate-et-Phasi.pdf#page=9">Read §3 of the original essay (PDF).</a></p>
+      <p class="equation"><var>p</var><sub><var>q</var>/2</sub>(<var>x</var>) = cos(2π<var>x</var>/<var>q</var>) = 1 if and only if <var>q</var> divides <var>x</var>.</p>
+      <p>For each odd <var>a</var> with 3 ≤ <var>a</var> ≤ <var>N</var>/2, take <var>b</var> = <var>N</var> − <var>a</var>. For an odd prime <var>q</var>, reject the split if either summand is a multiple of <var>q</var> other than <var>q</var> itself. Integer remainders evaluate this condition exactly.</p>
+    </section>
+
+    <section aria-labelledby="cutoff">
+      <h2 id="cutoff">The exact cutoff</h2>
+      <p>It suffices to check all odd primes <var>q</var> ≤ √(<var>N</var> − 3). Both summands are at most <var>N</var> − 3, and every odd composite has an odd prime divisor at most its square root. Every prime summand survives every check. Thus a split survives all checks through this cutoff exactly when both summands are prime. This is trial division expressed in the paper’s phase notation.</p>
+    </section>
+
+    <section aria-labelledby="experiment">
+      <h2 id="experiment">Computational results</h2>
+      <div class="table-scroll" role="region" aria-label="Phase filter results" tabindex="0">
+        <table>
+          <caption>Candidate counts with each unordered split counted once</caption>
+          <thead>
+            <tr><th scope="col">Target</th><th scope="col">Odd splits</th><th scope="col">Survive 3, 5, 7, 11</th><th scope="col">Prime pairs</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">128</th><td>31</td><td>3</td><td>3</td></tr>
+            <tr><th scope="row">1,000</th><td>249</td><td>42</td><td>28</td></tr>
+            <tr><th scope="row">10,000</th><td>2,499</td><td>391</td><td>127</td></tr>
+            <tr><th scope="row">1,000,000</th><td>249,999</td><td>38,963</td><td>5,402</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>For instance, 1,000 = 11 + 989 survives the four listed checks. The phase at <var>h</var> = 23/2 rejects it, since 989 = 23 × 43.</p>
+      <p>The full phase filter agreed with trial division on every odd split of every even target from 6 through 2,000. A separate exhaustive run used an Eratosthenes sieve to find one prime pair for each of the 499,999 even targets from 4 through 1,000,000. Trial division independently checked both primes in every reported pair.</p>
+    </section>
+
+    <section aria-labelledby="proof">
+      <h2 id="proof">What a proof still requires</h2>
+      <p>Any fixed finite list of phase checks will miss some composites. Let <var>M</var> be twice the product of the tested odd primes. The odd composite (<var>M</var> + 1)<sup>2</sup> has remainder 1 modulo every tested prime. Taking it as both summands therefore gives a composite pair that passes all those checks.</p>
+      <p>A proof would require a uniform lower bound of at least one surviving split after the cutoff grows with <var>N</var>. The experiment gives a reproducible demonstration of the phase method on a finite range. Oliveira e Silva, Herzog, and Pardi previously verified Goldbach through 4 × 10<sup>18</sup>. <a href="https://doi.org/10.1090/S0025-5718-2013-02787-1">Mathematics of Computation, 2014.</a></p>
+    </section>
+
+    <section aria-labelledby="reproduce">
+      <h2 id="reproduce">Reproduce the results</h2>
+      <p>Run <code>python3 goldbach-phase.py</code> with Python 3.9 or later to reproduce the table and verification. <a href="goldbach-phase.py" download>Download the Python script.</a></p>
+    </section>
+  </main>
+  <footer class="wrap">SystemaDock · Research Home</footer>
+</body>
+</html>
